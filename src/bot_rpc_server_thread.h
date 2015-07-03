@@ -19,6 +19,7 @@
 */
 
 #include <string>
+#include <yarp/os/Bottle.h>
 #include <yarp/os/Property.h>
 #include <yarp/os/RpcServer.h>
 #include <yarp/os/Thread.h>
@@ -26,15 +27,20 @@
 class BotRpcServerThread : public yarp::os::Thread
 {
 	public:
+		static const char DELIMITER;
+		
 		BotRpcServerThread(yarp::os::RpcServer *rpc_port, std::string *default_answer,  yarp::os::Property *dictionary, double delay);   
 		void run(); 
 	   
-	private:
+	protected:
 		/* thread parameters */
 		std::string 		*default_answer_;
 		yarp::os::Property 	*dictionary_;
 		yarp::os::RpcServer *rpc_port_;
 		double 				delay_;
+		
+		yarp::os::Bottle* buildBottle(std::string msg);
+		void addValue(yarp::os::Bottle& b, const std::string& value);
 };
 
 #endif
