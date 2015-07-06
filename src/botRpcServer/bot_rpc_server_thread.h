@@ -1,5 +1,5 @@
-#ifndef AUTOMATIC_RPC_SERVER_THREAD_H
-#define AUTOMATIC_RPC_SERVER_THREAD_H
+#ifndef BOT_RPC_SERVER_THREAD_H
+#define BOT_RPC_SERVER_THREAD_H
 
 /* 
  * Copyright (C) 2015 iCub Facility - Istituto Italiano di Tecnologia

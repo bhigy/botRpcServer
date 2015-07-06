@@ -1,5 +1,5 @@
-#ifndef AUTOMATIC_RPC_SERVER_MODULE_H
-#define AUTOMATIC_RPC_SERVER_MODULE_H
+#ifndef RPC_LISTENER_MODULE_H
+#define RPC_LISTENER_MODULE_H
 
 /* 
  * Copyright (C) 2015 iCub Facility - Istituto Italiano di Tecnologia
@@ -18,14 +18,14 @@
  * Public License for more details
 */
 
-#include <yarp/os/Bottle.h>
-#include <yarp/os/Property.h>
+#include <yarp/os/ResourceFinder.h>
+#include <yarp/os/RpcClient.h>
 #include <yarp/os/RpcServer.h>
 #include <yarp/os/RFModule.h>
 
-#include "bot_rpc_server_thread.h"
+#include "rpc_listener_thread.h"
 
-class BotRpcServerModule: public yarp::os::RFModule
+class RpcListenerModule: public yarp::os::RFModule
 {
 	public:
 	   
@@ -38,15 +38,15 @@ class BotRpcServerModule: public yarp::os::RFModule
    private:
 	   /* module parameters */
 	   std::string 	module_name_;
-	   std::string 	port_name_;
-	   std::string 	dictionary_config_filename_;
-	   std::string 	default_answer_;
-	   double		delay_;
+	   std::string 	input_rpc_port_name_;
+	   std::string 	output_rpc_port_name_;
+	   std::string 	event_port_name_;
 	 
 	   /* class variables */
-	   yarp::os::Property 	dictionary_;
-	   yarp::os::RpcServer 	rpc_port_;
-	   BotRpcServerThread 	*thread_;
+	   yarp::os::RpcServer 	input_rpc_port_;
+	   yarp::os::RpcClient 	output_rpc_port_;
+	   yarp::os::Port		event_port_;
+	   RpcListenerThread	*thread_;
 };
 
 #endif
