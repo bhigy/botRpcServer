@@ -1,8 +1,8 @@
-# Copyright: 2010 RobotCub Consortium
-# Author: Sean Ryan Fanello, Carlo Ciliberto
+# Copyright: 2015 iCub Facility
+# Author: Bertrand Higy
 # CopyPolicy: Released under the terms of the GNU GPL v2.0.
-cmake_minimum_required(VERSION 2.6)
-project(botRpcServer)
+cmake_minimum_required(VERSION 2.8)
+project(genericModules)
 
 find_package(YARP REQUIRED)
 find_package(ICUB REQUIRED)
@@ -17,8 +17,7 @@ include(ICUBcontribHelpers)
 include(ICUBcontribOptions)
 icubcontrib_set_default_prefix()
 
-#add_subdirectory(app)
+add_subdirectory(app)
 add_subdirectory(src)
 
 icubcontrib_add_uninstall_target()
-

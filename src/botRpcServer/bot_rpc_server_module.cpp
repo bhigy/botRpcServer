@@ -46,7 +46,7 @@ bool BotRpcServerModule::configure(ResourceFinder &rf)
 	}
 	
 	default_answer_ = rf.check("defaultAnswer", Value("ack"), "Default answer (string)").asString();
-	delay_ = rf.check("delay", Value("0"), "Delay (int)").asDouble();
+	delay_ = rf.check("delay", Value("0"), "Delay (double)").asDouble();
    	// create the thread and pass pointers to the module parameters
 	thread_ = new BotRpcServerThread(&rpc_port_, &default_answer_, &dictionary_, delay_);
 	// now start the thread to do the work
