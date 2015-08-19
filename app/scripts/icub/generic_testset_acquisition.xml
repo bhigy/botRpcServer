@@ -1,0 +1,68 @@
+  <application>
+      <!-- Generic information-->
+      <name>Generic testset acquisition</name>
+      <description>Acquires a generic set of data from iCub for testing purpose</description>
+
+      <authors>
+          <author email="bertrand.higy@iit.it">Bertrand HIGY</author>
+      </authors>
+
+      <!-- Required modules -->
+      <module>
+          <name>yarpdatadumper</name>
+          <parameters>--name /skin/left_hand</parameters>
+          <node>localhost</node>
+          <prefix>/dump</prefix>
+          <tag>yarpdatadumpeur left_hand</tag>
+      </module>
+      
+      <module>
+          <name>yarpdatadumper</name>
+          <parameters>--name /skin/left_hand_comp</parameters>
+          <node>localhost</node>
+          <prefix>/dump</prefix>
+          <tag>yarpdatadumpeur left_hand_comp</tag>
+      </module>
+      
+      <module>
+          <name>yarpdatadumper</name>
+          <parameters>--name /left_arm/state:o</parameters>
+          <node>localhost</node>
+          <prefix>/dump</prefix>
+          <tag>yarpdatadumpeur left_arm</tag>
+      </module>
+      
+      <module>
+          <name>yarpdatadumper</name>
+          <parameters>--name /left_arm/stateExt:o</parameters>
+          <node>localhost</node>
+          <prefix>/dump</prefix>
+          <tag>yarpdatadumpeur left_arm</tag>
+      </module>
+
+      <!-- Required connections -->
+      <connection>
+          <from>/icub/skin/left_hand</from>
+          <to>/dump/skin/left_hand</to>
+          <protocol>udp</protocol>
+      </connection>
+      
+      <connection>
+          <from>/icub/skin/left_hand_comp</from>
+          <to>/dump/skin/left_hand_comp</to>
+          <protocol>udp</protocol>
+      </connection>
+      
+      <connection>
+          <from>/icub/left_arm/state:o</from>
+          <to>/dump/left_arm/state:o</to>
+          <protocol>udp</protocol>
+      </connection>
+      
+      <connection>
+          <from>/icub/left_arm/stateExt:o</from>
+          <to>/dump/left_arm/stateExt:o</to>
+          <protocol>udp</protocol>
+      </connection>
+
+  </application>
